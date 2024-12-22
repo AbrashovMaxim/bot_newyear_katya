@@ -23,10 +23,10 @@ export class SendCommand extends Command {
                     const userSession = session.getSession(config.USER_ID + ':' + config.USER_ID) as SessionData;
 
                     const inlineKeyboard = [[{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]];
-                    if (userSession.openWishes.filter(el => !el.success).length > 0) {
+                    if (userSession.openWishes.filter(el => !el.getSuccess).length > 0) {
                         inlineKeyboard.unshift([{ text: 'Показать задания 🍭', callback_data: 'showWishesAdmin' }]);
                     }
-                    if (userSession.openRiddles.filter(el => !el.success).length > 0) {
+                    if (userSession.openRiddles.filter(el => !el.getSuccess).length > 0) {
                         inlineKeyboard.unshift([{ text: 'Показать загадки 💬', callback_data: 'showRiddlesAdmin' }]);
                     }
 
@@ -44,10 +44,10 @@ export class SendCommand extends Command {
                         return;
                     }
 
-                    const openRiddles = userSession.openRiddles.filter(riddle => !riddle.success);
+                    const openRiddles = userSession.openRiddles.filter(riddle => !riddle.getSuccess);
                     if (openRiddles.length != 0) {
                         const message = await ctx.sendMessage(
-                            "<b>❗ ОШИБКА ❗</b>\nУ пользователя <b>есть</b> открытая загадка <b>ID: " + openRiddles[0].id + "</b>",
+                            "<b>❗ ОШИБКА ❗</b>\nУ пользователя <b>есть</b> открытая загадка <b>ID: " + openRiddles[0].getId + "</b>",
                             {
                                 parse_mode: 'HTML',
                                 reply_markup: {
@@ -59,10 +59,10 @@ export class SendCommand extends Command {
                         return;
                     }
 
-                    const useRiddles = userSession.openRiddles.filter(riddle => riddle.id == id);
+                    const useRiddles = userSession.openRiddles.filter(riddle => riddle.getId == id);
                     if (useRiddles.length != 0) {
                         const message = await ctx.sendMessage(
-                            "<b>❗ ОШИБКА ❗</b>\nПользователь уже <b>открыл</b> эту загадку <b>ID: " + useRiddles[0].id + "</b>",
+                            "<b>❗ ОШИБКА ❗</b>\nПользователь уже <b>открыл</b> эту загадку <b>ID: " + useRiddles[0].getId + "</b>",
                             {
                                 parse_mode: 'HTML',
                                 reply_markup: {
@@ -89,7 +89,7 @@ export class SendCommand extends Command {
                     const getRiddle = riddle.getRiddle(id);
                     if (getRiddle) {
                         const userInlineKeyboard = [[{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]];
-                        if (userSession.openWishes.filter(el => !el.success).length > 0) {
+                        if (userSession.openWishes.filter(el => !el.getSuccess).length > 0) {
                             userInlineKeyboard.unshift([{ text: 'Показать задания 🍭', callback_data: 'showWishes' }]);
                         }
                         userInlineKeyboard.unshift([{ text: 'Получить подсказку 📈', callback_data: 'getPrompt' }]);

@@ -478,10 +478,10 @@ export class RiddleKit {
     getOpenRiddles(openWishes: OpenRiddle[]): string {
         let value = '_'.repeat(this._myRiddles.length + this._aiRiddles.length);
         for (const openWish of openWishes) {
-            if (!openWish.success) continue;
+            if (!openWish.getSuccess) continue;
 
-            const getWish = this._myRiddles.find(i => i.getId === openWish.id) || this._aiRiddles.find(i => i.getId === openWish.id) || null;
-            value = value.substring(0, openWish.id) + (getWish ? getWish.getSymbol : '_') + value.substring(openWish.id + 1);
+            const getWish = this._myRiddles.find(i => i.getId === openWish.getId) || this._aiRiddles.find(i => i.getId === openWish.getId) || null;
+            value = value.substring(0, openWish.getId) + (getWish ? getWish.getSymbol : '_') + value.substring(openWish.getId + 1);
         }
         return value;
     }

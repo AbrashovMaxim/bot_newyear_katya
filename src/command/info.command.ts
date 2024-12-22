@@ -49,13 +49,13 @@ export class InfoCommand extends Command {
 
                 let riddlesList = "";
                 for (const i of riddle.getAllRiddles()) {
-                    riddlesList += `\n<b>${i} загадка:</b> ${userSession.openRiddles.some(j => j.id == i) ? '✅' : '❌' }`
+                    riddlesList += `\n<b>${i} загадка:</b> ${userSession.openRiddles.some(j => j.getId == i) ? '✅' : '❌' }`
                 }
                 const inlineKeyboard = [[{ text: 'Обновить информацию ♻', callback_data: 'showInfo'}]];
-                if (ctx.session.openRiddles.filter(el => !el.success).length > 0) {
+                if (ctx.session.openRiddles.filter(el => !el.getSuccess).length > 0) {
                     inlineKeyboard.push([{ text: 'Показать загадку 💬', callback_data: 'showRiddle' }]);
                 }
-                if (ctx.session.openWishes.filter(el => !el.success).length > 0) {
+                if (ctx.session.openWishes.filter(el => !el.getSuccess).length > 0) {
                     inlineKeyboard.push([{ text: 'Показать задания 🍭', callback_data: 'showWishes' }]);
                 }
                 const sendMessage = await ctx.sendMessage(

@@ -18,11 +18,11 @@ export class ShowWishesAdminAction extends Action {
 
                 let wishesList = "";
                 for (const i of wish.getAllWishes()) {
-                    wishesList += `\n<b>${i} желание:</b> ${userSession.openWishes.some(j => j.id == i) ? (userSession.openWishes.filter(j => j.id == i)[0].success ? '✅' : '♻') : '❌' }`
+                    wishesList += `\n<b>${i} желание:</b> ${userSession.openWishes.some(j => j.getId == i) ? (userSession.openWishes.filter(j => j.getId == i)[0].getSuccess ? '✅' : '♻') : '❌' }`
                 }
 
                 const inlineKeyboard = [[{ text: 'Обновить задания ♻', callback_data: 'showWishesAdmin'}], [{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]];
-                if (userSession.openRiddles.filter(el => !el.success).length > 0) {
+                if (userSession.openRiddles.filter(el => !el.getSuccess).length > 0) {
                     inlineKeyboard.unshift([{ text: 'Показать загадки 💬', callback_data: 'showRiddlesAdmin' }]);
                 }
 

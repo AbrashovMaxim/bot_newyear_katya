@@ -13,8 +13,8 @@ export class ShowWishesAction extends Action {
         this.bot.action('showWishes', async (ctx) => {
             await deleteMessageBot(ctx);
 
-            const getRiddle = ctx.session.openRiddles.find(el => !el.success) || null;
-            const getWishes = ctx.session.openWishes.filter(el => !el.success);
+            const getRiddle = ctx.session.openRiddles.find(el => !el.getSuccess) || null;
+            const getWishes = ctx.session.openWishes.filter(el => !el.getSuccess);
 
             let userMessage;
 
@@ -26,7 +26,7 @@ export class ShowWishesAction extends Action {
             if (getWishes.length > 0) {
                 let wishesMessage = "<b>Задания, которые ты должна выполнить: </b>\n\n";
                 for (let i = 0; i < getWishes.length; i++) {
-                    const getWishesObject = wish.getWish(getWishes[i].id);
+                    const getWishesObject = wish.getWish(getWishes[i].getId);
                     wishesMessage += "<b>" + (i + 1) + ". </b>" + getWishesObject?.getText + "\n";
                 }
 

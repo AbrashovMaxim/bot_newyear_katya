@@ -2,68 +2,68 @@ import { Context } from "telegraf";
 
 export class OpenRiddle {
 
-    private readonly _id: number;
-    private _countPrompts: number;
-    private _countWarn: number;
-    private _success: boolean;
+    private readonly id: number;
+    private countPrompts: number;
+    private countWarn: number;
+    private success: boolean;
 
 
     constructor(id: number, countPrompts: number, countWarn: number, success: boolean) {
-        this._id = id;
-        this._countPrompts = countPrompts;
-        this._success = success;
-        this._countWarn = countWarn;
+        this.id = id;
+        this.countPrompts = countPrompts;
+        this.countWarn = countWarn;
+        this.success = success;
     }
 
 
-    get id(): number {
-        return this._id;
+    get getId(): number {
+        return this.id;
     }
 
-    get countPrompts(): number {
-        return this._countPrompts;
+    get getCountPrompts(): number {
+        return this.countPrompts;
     }
-    set countPrompts(value: number) {
-        this._countPrompts = value;
-    }
-
-    get countWarn(): number {
-        return this._countWarn;
-    }
-    set countWarn(value: number) {
-        this._countWarn = value;
+    set setCountPrompts(value: number) {
+        this.countPrompts = value;
     }
 
-    get success(): boolean {
-        return this._success;
+    get getCountWarn(): number {
+        return this.countWarn;
     }
-    set success(value: boolean) {
-        this._success = value;
+    set setCountWarn(value: number) {
+        this.countWarn = value;
+    }
+
+    get getSuccess(): boolean {
+        return this.success;
+    }
+    set setSuccess(value: boolean) {
+        this.success = value;
     }
 
 }
 
 export class OpenWish {
 
-    private readonly _id: number;
-    private _success: boolean;
+    private readonly id: number;
+    private success: boolean;
 
 
     constructor(id: number, success: boolean) {
-        this._id = id;
-        this._success = success;
+        this.id = id;
+        this.success = success;
     }
 
 
-    get id(): number {
-        return this._id;
+    get getId(): number {
+        return this.id;
     }
 
-    get success(): boolean {
-        return this._success;
+    get getSuccess(): boolean {
+        return this.success;
     }
-    set success(value: boolean) {
-        this._success = value;
+    set setSuccess(value: boolean) {
+        this.success = value;
     }
 
 }
