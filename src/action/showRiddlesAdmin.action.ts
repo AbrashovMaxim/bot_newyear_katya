@@ -18,11 +18,11 @@ export class ShowRiddlesAdminAction extends Action {
 
                 let riddlesList = "";
                 for (const i of riddle.getAllRiddles()) {
-                    riddlesList += `\n<b>${i} загадка:</b> ${userSession.openRiddles.some(j => j.getId == i) ? (userSession.openRiddles.filter(j => j.getId == i)[0].getSuccess ? '✅' : '♻') : '❌' } ${userSession.openRiddles.some(j => j.getId == i) ? ' | <b>Подсказок:</b> ' + userSession.openRiddles.filter(j => j.getId == i)[0].getCountPrompts + ' | <b>Ошибок: </b>' + userSession.openRiddles.filter(j => j.getId == i)[0].getCountWarn : ''}`
+                    riddlesList += `\n<b>${i} загадка:</b> ${userSession.openRiddles.some(j => j.id == i) ? (userSession.openRiddles.filter(j => j.id == i)[0].success ? '✅' : '♻') : '❌' } ${userSession.openRiddles.some(j => j.id == i) ? ' | <b>Подсказок:</b> ' + userSession.openRiddles.filter(j => j.id == i)[0].countPrompts + ' | <b>Ошибок: </b>' + userSession.openRiddles.filter(j => j.id == i)[0].countWarn : ''}`
                 }
 
                 const inlineKeyboard = [[{ text: 'Обновить загадки ♻', callback_data: 'showRiddlesAdmin'}], [{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]];
-                if (userSession.openWishes.filter(el => !el.getSuccess).length > 0) {
+                if (userSession.openWishes.filter(el => !el.success).length > 0) {
                     inlineKeyboard.unshift([{ text: 'Показать задания 🍭', callback_data: 'showWishesAdmin' }]);
                 }
 

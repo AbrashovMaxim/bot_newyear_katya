@@ -23,10 +23,10 @@ export class WishCommand extends Command {
                     const userSession = session.getSession(config.USER_ID + ':' + config.USER_ID) as SessionData;
 
                     const inlineKeyboard = [[{text: 'Открыть информацию 📃', callback_data: 'showInfo'}]];
-                    if (userSession.openWishes.filter(el => !el.getSuccess).length > 0) {
+                    if (userSession.openWishes.filter(el => !el.success).length > 0) {
                         inlineKeyboard.unshift([{text: 'Показать задания 🍭', callback_data: 'showWishesAdmin'}]);
                     }
-                    if (userSession.openRiddles.filter(el => !el.getSuccess).length > 0) {
+                    if (userSession.openRiddles.filter(el => !el.success).length > 0) {
                         inlineKeyboard.unshift([{text: 'Показать загадки 💬', callback_data: 'showRiddlesAdmin'}]);
                     }
 
@@ -44,7 +44,7 @@ export class WishCommand extends Command {
                         return;
                     }
 
-                    const successWish = userSession.openWishes.find(wish => wish.getId == id);
+                    const successWish = userSession.openWishes.find(wish => wish.id == id);
                     if (successWish == null) {
                         const message = await ctx.sendMessage(
                             "<b>❗ ОШИБКА ❗</b>\nУ пользователя <b>нету</b> такого задания <b>ID: " + id + "</b>",
@@ -60,7 +60,7 @@ export class WishCommand extends Command {
                     }
 
 
-                    if (successWish.getSuccess) {
+                    if (successWish.success) {
                         const message = await ctx.sendMessage(
                             "<b>❗ ОШИБКА ❗</b>\nУ пользователя <b>выполнено</b> данное задание <b>ID: " + id + "</b>",
                             {
@@ -84,7 +84,7 @@ export class WishCommand extends Command {
                         }
                     );
                     ctx.session.botMessage = message.message_id;
-                    successWish.setSuccess = true;
+                    successWish.success = true;
                 }
             }
         });

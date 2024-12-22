@@ -21,7 +21,7 @@ export class HandleOnTextAction extends Action {
                     let message;
                     if (getRiddleObj.getAnswers.includes(ctx.message.text.toLowerCase())) {
                         const inlineKeyboard = [[{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]];
-                        if (ctx.session.openWishes.filter(el => !el.getSuccess).length > 0) {
+                        if (ctx.session.openWishes.filter(el => !el.success).length > 0) {
                             inlineKeyboard.unshift([{ text: 'Показать задания 🍭', callback_data: 'showWishes' }]);
                         }
                         message = await ctx.sendMessage(
@@ -34,15 +34,15 @@ export class HandleOnTextAction extends Action {
                             }
                         );
 
-                        const getRiddle = ctx.session.openRiddles.filter(el => el.getId == ctx.session.selectRiddle)[0] as OpenRiddle | null;
-                        if (getRiddle) getRiddle.setSuccess = true;
+                        const getRiddle = ctx.session.openRiddles.filter(el => el.id == ctx.session.selectRiddle)[0] as OpenRiddle | null;
+                        if (getRiddle) getRiddle.success = true;
 
                     } else {
                         const inlineKeyboard = [[{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]];
-                        if (ctx.session.openWishes.filter(el => !el.getSuccess).length > 0) {
+                        if (ctx.session.openWishes.filter(el => !el.success).length > 0) {
                             inlineKeyboard.unshift([{ text: 'Показать задания 🍭', callback_data: 'showWishes' }]);
                         }
-                        if (ctx.session.openRiddles.filter(el => !el.getSuccess).length > 0) {
+                        if (ctx.session.openRiddles.filter(el => !el.success).length > 0) {
                             inlineKeyboard.unshift([{ text: 'Показать загадку 💬', callback_data: 'showRiddle' }]);
                         }
 
@@ -56,8 +56,8 @@ export class HandleOnTextAction extends Action {
                             }
                         );
 
-                        const getRiddle = ctx.session.openRiddles.filter(el => el.getId == ctx.session.selectRiddle)[0];
-                        if (getRiddle) getRiddle.setCountWarn++;
+                        const getRiddle = ctx.session.openRiddles.filter(el => el.id == ctx.session.selectRiddle)[0];
+                        if (getRiddle) getRiddle.countWarn++;
                     }
 
                     ctx.session.botMessage = message.message_id;

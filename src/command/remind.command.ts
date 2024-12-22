@@ -20,7 +20,7 @@ export class RemindCommand extends Command {
 
                 const userSession = session.getSession(config.USER_ID + ':' + config.USER_ID) as SessionData;
 
-                const activateRiddle = userSession.openRiddles.filter(el => !el.getSuccess);
+                const activateRiddle = userSession.openRiddles.filter(el => !el.success);
 
                 if (activateRiddle.length > 0) {
                     if (userSession.botMessage) {
