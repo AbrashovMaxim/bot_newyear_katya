@@ -1,0 +1,1 @@
+{"root":["./src/app/commands/command.class.ts","./src/app/commands/start.command.ts","./src/app/config/config.interface.ts","./src/app/config/config.service.ts","./src/app/context/context.interface.ts"],"errors":true,"version":"5.7.2"}

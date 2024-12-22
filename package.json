@@ -1,0 +1,30 @@
+{
+  "name": "tgbot_luckyny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dest/app.js",
+    "dev": "nodemon ./src/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/dotenv": "^8.2.3",
+    "@types/node": "^22.10.2",
+    "eslint": "8.22.0",
+    "globals": "^15.14.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9",
+    "telegraf": "^4.16.3",
+    "telegraf-session-local": "^2.1.1",
+    "ts-node": "^10.9.2"
+  }
+}

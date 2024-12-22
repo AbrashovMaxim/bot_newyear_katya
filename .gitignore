@@ -1,0 +1,5 @@
+/dest/
+.env
+sessions.json
+/node_modules/
+/.idea/
