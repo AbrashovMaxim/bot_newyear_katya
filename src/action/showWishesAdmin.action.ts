@@ -18,7 +18,7 @@ export class ShowWishesAdminAction extends Action {
 
                 let wishesList = "";
                 for (const i of wish.getAllWishes()) {
-                    wishesList += `\n<b>${i} желание:</b> ${userSession.openWishes.some(j => j.id == i) ? (userSession.openWishes.filter(j => j.id == i)[0].success ? '✅' : '♻') : '❌' }`
+                    wishesList += `\n<b>${i} задание:</b> ${userSession.openWishes.some(j => j.id == i) ? (userSession.openWishes.filter(j => j.id == i)[0].success ? '✅' : '♻') : '❌' }`
                 }
 
                 const inlineKeyboard = [[{ text: 'Обновить задания ♻', callback_data: 'showWishesAdmin'}], [{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]];
