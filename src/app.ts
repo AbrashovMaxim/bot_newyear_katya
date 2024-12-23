@@ -18,6 +18,7 @@ import { ShowWishesAction } from "./action/showWishes.action";
 import {WishCommand} from "./command/wish.class";
 import {ShowWishesAdminAction} from "./action/showWishesAdmin.action";
 import {ShowRiddlesAdminAction} from "./action/showRiddlesAdmin.action";
+import {TaskCommand} from "./command/task.command";
 
 
 class Bot {
@@ -36,7 +37,8 @@ class Bot {
             new InfoCommand(this.bot),
             new SendCommand(this.bot),
             new RemindCommand(this.bot),
-            new WishCommand(this.bot)
+            new WishCommand(this.bot),
+            new TaskCommand(this.bot)
         ];
 
         this.actions = [
