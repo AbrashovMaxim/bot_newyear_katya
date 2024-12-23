@@ -21,10 +21,11 @@ export class ShowWishesAdminAction extends Action {
                     wishesList += `\n<b>${i} задание:</b> ${userSession.openWishes.some(j => j.id == i) ? (userSession.openWishes.filter(j => j.id == i)[0].success ? '✅' : '♻') : '❌' }`
                 }
 
-                const inlineKeyboard = [[{ text: 'Обновить задания ♻', callback_data: 'showWishesAdmin'}], [{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]];
-                if (userSession.openRiddles.filter(el => !el.success).length > 0) {
-                    inlineKeyboard.unshift([{ text: 'Показать загадки 💬', callback_data: 'showRiddlesAdmin' }]);
-                }
+                const inlineKeyboard = [
+                    [{ text: 'Обновить задания ♻', callback_data: 'showWishesAdmin'}],
+                    [{ text: 'Показать загадки 💬', callback_data: 'showRiddlesAdmin' }],
+                    [{ text: 'Открыть информацию 📃', callback_data: 'showInfo' }]
+                ];
 
                 const sendMessage = await ctx.sendMessage(
                     `<b>Задания пользователя:</b>\n` +

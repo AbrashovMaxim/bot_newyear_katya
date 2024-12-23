@@ -38,10 +38,10 @@ export class TaskCommand extends Command {
                     }
 
                     const message = await ctx.sendMessage(
-                        `<b>❕ ИНФОРМАЦИЯ ❕</b>\nЗагадка <b>ID: " + id + ":</b>!\n\n` +
+                        `<b>❕ ИНФОРМАЦИЯ ❕</b>\nЗагадка <b>ID: ${id}:</b>!\n\n` +
                         `${getRiddle.getText}\n\n` +
-                        `<b>Ответы:</b> <pre>${getRiddle.getAnswers.join(",")}</pre>\n` +
-                        `<b>Подсказки:</b> <pre>${getRiddle.getPrompts.join(",")}</pre>`,
+                        `<b>Ответы:</b> <pre>${getRiddle.getAnswers.join(" | ")}</pre>\n` +
+                        `<b>Подсказки:</b> <pre>${getRiddle.getPrompts.join(" | ")}</pre>`,
                         {
                             parse_mode: 'HTML',
                             reply_markup: {
